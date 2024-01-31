@@ -1,0 +1,11 @@
+
+*.log
+*.pyc
+__pycache__/
+venv/
+media/
+ttv2xiv/settings/dev.py
+ttv2xiv/settings/production.py
+
+staticfiles/
+node_modules/

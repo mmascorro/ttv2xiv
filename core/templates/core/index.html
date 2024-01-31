@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+
+
+{% block content %}
+
+<h1 class="title">{{ title }}</h1>
+
+<a href="{% url 'login' %}" class="button is-large is-link twitch-btn">Login with Twitch</a>
+
+
+{% endblock content %}

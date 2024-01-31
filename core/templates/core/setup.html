@@ -1,0 +1,175 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+
+<div class="columns">
+    <div class="column is-half">
+        <div class="box">
+            <h2 class="title is-2">Twitch Name</h2>
+            <h3 class="title is-3">{{ request.user.username }}</h3>
+            <hr>
+            <p class="content">
+                If you change your Twitch name, sign into this site again to update it here.
+            </p>
+        </div>
+    </div>
+
+    <div class="column is-half">
+        <div class="box">
+            <h2 class="title is-2">FFXIV Name</h2>
+            <h3 class="title is-3" id="xiv_name">{% if request.user.twitchuser.xiv_name %}{{ request.user.twitchuser.xiv_name }} {% else %} ??? {% endif %}</h3>
+            <hr>
+            <div>
+                <form method="post" id="xiv_form" class="block">
+                    <p>Select your character&rsquo;s world and search for their name.</p>
+                    <div class="field">
+                        <label class="label">XIV World</label>
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select id="xiv_world_select" name="xiv_world" required>
+                                    <option value="">Select World</option>
+                                    <option>Adamantoise</option>
+                                    <option>Aegis</option>
+                                    <option>Alexander</option>
+                                    <option>Alpha</option>
+                                    <option>Anima</option>
+                                    <option>Asura</option>
+                                    <option>Atomos</option>
+                                    <option>Bahamut</option>
+                                    <option>Balmung</option>
+                                    <option>Behemoth</option>
+                                    <option>Belias</option>
+                                    <option>Bismarck</option>
+                                    <option>Brynhildr</option>
+                                    <option>Cactuar</option>
+                                    <option>Carbuncle</option>
+                                    <option>Cerberus</option>
+                                    <option>Chocobo</option>
+                                    <option>Coeurl</option>
+                                    <option>Diabolos</option>
+                                    <option>Durandal</option>
+                                    <option>Excalibur</option>
+                                    <option>Exodus</option>
+                                    <option>Faerie</option>
+                                    <option>Famfrit</option>
+                                    <option>Fenrir</option>
+                                    <option>Garuda</option>
+                                    <option>Gilgamesh</option>
+                                    <option>Goblin</option>
+                                    <option>Gungnir</option>
+                                    <option>Hades</option>
+                                    <option>Halicarnassus</option>
+                                    <option>Hyperion</option>
+                                    <option>Ifrit</option>
+                                    <option>Ixion</option>
+                                    <option>Jenova</option>
+                                    <option>Kujata</option>
+                                    <option>Lamia</option>
+                                    <option>Leviathan</option>
+                                    <option>Lich</option>
+                                    <option>Louisoix</option>
+                                    <option>Maduin</option>
+                                    <option>Malboro</option>
+                                    <option>Mandragora</option>
+                                    <option>Marilith</option>
+                                    <option>Masamune</option>
+                                    <option>Mateus</option>
+                                    <option>Midgardsormr</option>
+                                    <option>Moogle</option>
+                                    <option>Odin</option>
+                                    <option>Omega</option>
+                                    <option>Pandaemonium</option>
+                                    <option>Phantom</option>
+                                    <option>Phoenix</option>
+                                    <option>Ragnarok</option>
+                                    <option>Raiden</option>
+                                    <option>Ramuh</option>
+                                    <option>Ravana</option>
+                                    <option>Ridill</option>
+                                    <option>Sagittarius</option>
+                                    <option>Sargatanas</option>
+                                    <option>Sephirot</option>
+                                    <option>Seraph</option>
+                                    <option>Shinryu</option>
+                                    <option>Shiva</option>
+                                    <option>Siren</option>
+                                    <option>Sophia</option>
+                                    <option>Spriggan</option>
+                                    <option>Tiamat</option>
+                                    <option>Titan</option>
+                                    <option>Tonberry</option>
+                                    <option>Twintania</option>
+                                    <option>Typhon</option>
+                                    <option>Ultima</option>
+                                    <option>Ultros</option>
+                                    <option>Unicorn</option>
+                                    <option>Valefor</option>
+                                    <option>Yojimbo</option>
+                                    <option>Zalera</option>
+                                    <option>Zeromus</option>
+                                    <option>Zodiark</option>
+                                    <option>Zurvan</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">XIV Name</label>
+                        <div class="control">
+                            <input type="text" id="xiv_name_input" name="xiv_name" class="input" required placeholder="Forename Surname">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input type="submit" id="xiv_search" name="xiv_search" value="Search" class="button is-primary">
+                        </div>
+                    </div>
+                </form>
+
+                <progress id="xiv-progress" class="progress is-large is-info is-hidden" max="100">70%</progress>
+
+                <div id="result-instruction" class="block is-hidden">
+                    
+                    <p class="content">Select your character to confirm.</p>
+                 
+                </div>
+                <section id="search_results" class="block has-text-left">
+
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="columns">
+    <div class="column is-full">
+        <div class="box">
+            <p class="content">If you wish to delete your info, click the button below.</p>
+            <button id="delete-button" class="button is-danger">Delete</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<template id="entry-template">
+    <div data-xiv-id="" class="media is-clickable xiv-search-entry">
+        <figure class="media-left image is-64x64">
+            <img src="">
+        </figure>
+        <div class="media-content">
+            <p class="title is-2"></p>
+        </div>
+    </div>
+</template>
+
+<script src="{% static 'core/setup.js'  %}"></script>
+
+{% endblock content %}

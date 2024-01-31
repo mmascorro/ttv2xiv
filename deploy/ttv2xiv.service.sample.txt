@@ -1,0 +1,15 @@
+[Unit]
+Description=TTV2XIV
+After=network.target
+
+[Service]
+Environment=DJANGO_SETTINGS_MODULE=ttv2xiv.settings.production
+User=user
+RuntimeDirectory=ttv2xiv
+WorkingDirectory=/home/user/ttv2xiv/
+ExecStart=/home/user/ttv2xiv/venv/bin/gunicorn -c deploy/gunicorn.py ttv2xiv.wsgi
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target

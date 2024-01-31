@@ -1,0 +1,29 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="columns is-centered">
+    <div class="column is-half has-text-left">
+        <h1 class="title is-1 has-text-centered">About</h1>
+        <p class="content">
+            The initial idea for this site is to let people more easily share FFXIV character names when playing with Twitch streamers.<br>
+            If you want others in Twitch chat to see your character name, sign in and set it.<br>
+            If you want to see the names of others, installing the browser extension is necessary.<br>
+            You can delete your info at any time.
+        </p>
+        
+        <h2 class="title is-2 has-text-centered">Not Seeing Changes?</h2>
+        <p class="content">
+            If you've set your info, updated it, or deleted it, there can be a few minutes before cached data is updated.<br>
+            A force-refresh of the browser tab can possibly help, or even a browser restart.<br>
+            Be sure to check if the installed browser extension has permissions enabled for twitch.tv domains.
+        </p>
+        
+        
+        
+    </div>
+</div>
+
+{% endblock content %}

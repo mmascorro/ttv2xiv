@@ -1,0 +1,23 @@
+:root {
+    --twitch-purple: #9146FF
+}
+
+
+
+.twitch-btn {
+
+    background-color: var(--twitch-purple);
+
+}
+  
+.xiv-search-entry:hover {
+
+    & .title {
+        color:  var(--twitch-purple);
+
+    }
+
+    & .title::after {
+        content: '✅';
+    }
+}

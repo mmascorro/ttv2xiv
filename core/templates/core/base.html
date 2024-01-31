@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <link rel="icon" type="image/svg+xml" href="{% static 'core/images/logo.svg' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="{% static 'core/style.css' %}">
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ttv2xiv.futuretuesday.com/" />
+  {% block css %}{% endblock css %}
+</head>
+<body>
+  <nav class="navbar is-link" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{% url 'index' %}">
+        Home
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a href="{% url 'about' %}" class="navbar-item">About</a>
+        <a href="#" class="navbar-item">Firefox</a>
+        <a href="#" class="navbar-item">Chrome</a>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            {% if user.is_authenticated %}
+              <a href="{% url 'logout' %}" class="button is-danger">Logout</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="section has-text-centered">
+    {% block content %}{% endblock content %}
+  </div>
+
+
+
+  <script src="{% static 'core/main.js'  %}"></script>
+  {% block js %}{% endblock js %}
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>Original idea by <a href="https://www.twitch.tv/didntnoticeyou">didntnoticeyou</a>. Inspired by <a href="https://pronouns.alejo.io/">Twitch Chat Pronouns</a></p>
+      <p>
+        <a href="https://github.com/mmascorro/ttv2xiv">GitHub</a>
+    </div>
+  </footer>
+</body>
+</html>
