@@ -50,16 +50,17 @@
     {% block content %}{% endblock content %}
   </div>
 
-
-
-  <script src="{% static 'core/main.js'  %}"></script>
-  {% block js %}{% endblock js %}
   <footer class="footer">
     <div class="content has-text-centered">
       <p>Original idea by <a href="https://www.twitch.tv/didntnoticeyou">didntnoticeyou</a>. Inspired by <a href="https://pronouns.alejo.io/">Twitch Chat Pronouns</a></p>
       <p>
-        <a href="https://github.com/mmascorro/ttv2xiv">GitHub</a>
+        <a class="mx-3" href="#" id="contact-button">Contact</a>
+        <a class="mx-3" href="https://github.com/mmascorro/ttv2xiv">GitHub</a>
+      </p>
     </div>
   </footer>
+  
+  <script src="{% static 'core/main.js'  %}"></script>
+  {% block js %}{% endblock js %}
 </body>
 </html>
