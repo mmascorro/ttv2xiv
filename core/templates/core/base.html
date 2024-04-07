@@ -10,12 +10,11 @@
   <link rel="stylesheet" href="{% static 'core/style.css' %}">
 
   <meta property="og:title" content="{{ title }}" />
+  <meta property="og:description" content="Browser extension to see FFXIV names while in Twitch chat" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{{request.scheme}}://{{ request.get_host }}/" />
   <meta property="og:image" content="{{request.scheme}}://{{ request.get_host }}{% static 'core/images/ttv2xiv-screenshot.png' %}" />     
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{{ title }}" />
-  <meta name="twitter:image" content="{{request.scheme}}://{{ request.get_host }}{% static 'core/images/ttv2xiv-screenshot.png' %}" />
  
 
   {% block css %}{% endblock css %}
@@ -60,9 +59,11 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p>Original idea by <a href="https://www.twitch.tv/didntnoticeyou">didntnoticeyou</a>. Inspired by <a href="https://pronouns.alejo.io/">Twitch Chat Pronouns</a></p>
+      <p class="is-size-5">Contact</p>
       <p>
-        <a class="mx-3" href="#" id="contact-button">Contact</a>
         <a class="mx-3" href="https://github.com/mmascorro/ttv2xiv">GitHub</a>
+        <a class="mx-3" href="https://twitter.com/futuretuesday">Twitter</a>
+        <a class="mx-3" href="#" id="contact-button">Email</a>
       </p>
     </div>
   </footer>
